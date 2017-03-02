@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/mracalc/mracalc.css" type="text/css">
+    <script type="text/javascript" src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/mracalc/mracalc.js"></script>
+</head>
+<body>
+    <div class="PrimaryCalcL">
+        <form name=form1 method="post">
+            <table cellSpacing=1 cellPadding=1 border=1 width=100%>
+                <tbody>
+                    <tr>
+                        <td align=middle colSpan=3>
+                            <b><font size=5>Sex Percent</font></b>
+                        </td>
+                    <tr>
+                        <td>
+                            Total N
+                            <input size=6 name=a style="margin-left: 79px">
+                            <br />Given Sex N
+                            <input size=6 name=b style="margin-left: 40px">
+                        </td>
+                        <td>
+                            Given Sex Percent
+                            <input maxLength=40 size=6 name=total1 style="margin-left: 28px">
+                            <br />
+                            Assumed Sex Percent
+                            <input maxLength=40 size=6 name=total2 style="margin-left: 5px">
+                        </td>
+                        <td>
+                            <input onclick=perc1(),perc1a() type=button class="button buttonCalc" value=Calculate>
+                        </td>
+                    <tr>
+                        <td>
+                            What is given %?
+                            <input size=6 name=c style="margin-left: 7px">
+                        </td>
+                        <td>
+                            Other %
+                            <input size=6 name=total3 style="margin-left: 100px">
+                        </td>
+                        <td>
+                            <input onclick=perc2() type=button class="button buttonCalc" value=Calculate>
+                        </td>
+                    <tr>
+                        <td align=middle colSpan=3>
+                            <input type=reset class="button buttonR" value=Reset>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div class="PrimaryCalcR">
+        <form name=form2 method="post">
+            <table cellSpacing=1 cellPadding=1 border=1 width=100%>
+                <tbody>
+                    <tr>
+                        <td align=middle colSpan=3>
+                            <B><FONT size=5>Error Conversion</FONT></B>
+                        </td>
+                    <tr>
+                        <td>
+                            Enter SEM
+                            <input size=6 name=e style="margin-left: 50px">
+                            <br /> Enter n
+                            <input size=6 name=n style="margin-left: 78px">
+                        </td>
+                        <td>
+                            Standard Deviation
+                            <input maxLength=40 size=6 name=d style="margin-left: 39px">
+                        </td>
+                        <td>
+                            <input onclick=se() type=button class="button buttonCalc" value=Calculate>
+                        </td>
+                    <tr>
+                        <td align=middle colSpan=3 style="height:94px">
+                            <input type=reset class="button buttonR" value=Reset>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <div class="SecondaryCalc">
+        <form name=form3 method="post">
+            <div id="Conv">
+                <table cellSpacing=1 cellPadding=1 border=1 width=100%>
+                    <tbody>
+                        <tr>
+                            <td align=middle colSpan=3>
+                                <B><FONT size=5> Confidence Interval Conversion (90, 95, 98, 99%)</FONT></B>
+                            </td>
+                        <tr>
+                            <td>
+                                Enter Upper Value
+                                <input size=6 name=u style="margin-left: 12px"> Enter CI %
+                                <select name="CI" id="CISelect">
+                                    <option value="90">90</option>
+                                    <option value="95" selected>95</option>
+                                    <option value="98">98</option>
+                                    <option value="99">99</option>
+                                </select>
+                                <br /> Enter Lower Value
+                                <input size=6 name=l style="margin-left: 10px"> Enter n Value
+                                <input size=6 name=n style="margin-left: 10px">
+                            </td>
+                            <td>
+                                Standard Deviation
+                                <input maxLength=40 size=5 name=d>
+                            </td>
+                            <td>
+                                <input onclick=ci() type=button class="button buttonCalc" value=Calculate>
+                            </td>
+                        <tr>
+                            <td align=middle colSpan=3>
+                                <input type=reset class="button buttonR" value=Reset>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+    <div class="TertiaryCalcL">
+        <div id="InputTablediv">
+            <form name=form4 method="post" id="DynamicM">
+                <table id="InputTable" cellSpacing=1 cellPadding=1 border=1 width=100%>
+                    <tbody>
+                    <td align=middle colSpan=4>
+                        <B><FONT size=5> Mean/SD for Individual Patient Data</FONT></B>
+                    </td>
+                    <tr>
+                        <td width="15%">Patient Number</td>
+                        <td width="25%">Value</td>
+                        <td>Delete Row</td>
+                        <td>Add Patient Row</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td><input size=15 class="PatientV" name=iz /></td>
+                        <td><input type="button" class="button buttonCalc" value="Delete" onclick="deleteRow(this)" /></td>
+                        <td><input type="button" id="AddP" class="button buttonCalc" value="Add" onclick="insRow()" /></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div class="TertiaryCalcR">
+        <div id="OverMSD">
+            <form name=form5 method="post" id="MSD">
+                <table id="SDRaw" cellSpacing=1 cellPadding=1 border=1 width=100%>
+                    <tr>
+                        <td>Overall Mean <input id="totalMean" size=6 type="text" /></td>
+                        <td>Overall Standard Deviation <input size=6 id="totalSD" /></td>
+                        <td>
+                            <input onclick=calculateM(),calculateSD() type=button class="button buttonCalc" value="Calculate">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align=middle colSpan=3>
+                            <input type="button" onclick="IndivR()" class="button buttonR" value="Reset">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+    </div>
+</body>
+</html>
