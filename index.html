@@ -12,194 +12,242 @@
     <link href="mracalc.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="container">
 
-        <div class="row">
+    <!---------------------------------------------------------N to %----------------------------->
 
-            <div class="col-md-6">
-                <form name=sexPercentCalc method="post">
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-6">
-                                    <b><font>Sex Percent Input</font></b>
-                                </td>
+        <div class="container-fluid">
+            <div class="row">
+                <form name=nToPercent method="post">
+                    <div class="col-lg-7">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"id="tableTitle">Convert N to Percent of Whole</h3>
+                                <input type="reset" id="tableTitle" value="Reset" class="btn-warning">
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Total Sample N Input</th>
+                                                <th>Reported  N Input</th>
+                                                <th>Reported N Percent is</th>
+                                                <th>Other Percent is</th>
+                                            </tr>
+                                        </thead>
+                                        <tr>
+                                            <td>
+                                                <!-- User input for given sex N values -->
+                                                <input data-bind="value: totalN" data-val="true" type="text" />
+                                            </td>
 
-                                <td class="col-md-6">
-                                    <b><font>Output</font></b>
-                                </td>
-                            <tr>
-                                <td>
-                                    <!-- User input for given sex N values -->
-                                    Total Sample N <br />
-                                    <input data-bind="value: totalN" data-val="true" type="text" /><br />
-
-                                    Reported Sex N <br />
-                                    <input data-bind="value: reportedN" data-val="true" type="text" />
-                                </td>
-                                <td>
-                                    <!-- Result for sex precent-->
-                                    Reported Sex Percent is <br />
-                                    <input data-bind="value: reportedPercResult" data-val="true" type="text" /><br />
-
-                                    Assumed Sex Percent is <br />
-                                    <input data-bind="value: assumedPercResult" data-val="true" type="text" />
-                                </td>
-
-                            <tr>
-                                <td>
-                                    <!-- User input for given Percent-->
-                                    What is given %? <br />
-                                    <input data-bind="value: givenPerc" data-val="true" type="text" />
-                                </td>
-                                <td>
-                                    <!-- Result for assumed percent-->
-                                    Other % is <br />
-                                    <input data-bind="value: percResult" data-val="true" type="text" />
-                                </td>
-                        </tbody>
-                    </table>
+                                            <td>
+                                                <input data-bind="value: reportedN" data-val="true" type="text" />
+                                            </td>
+                                            <td>
+                                                <!-- Result for sex precent-->
+                                                <input data-bind="value: reportedPercResult" data-val="true" type="text" class="result"/>
+                                            </td>
+                                            <td>
+                                                <input data-bind="value: assumedPercResult" data-val="true" type="text" class="result"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!--------------------------------------------------Percent to Percent-------------------------------------------->
+                <form class="percToPerc">
+                    <div class="col-lg-5">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title" id="tableTitle">Find Other Percent Out of 100</h3>
+                                <input type="reset" id="tableTitle" value="Reset" class="btn-warning">
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Given Percent</th>
+                                            <th>Other Percent Out of 100 is</th>
+                                        </tr>
+                                    </thead>
+                                    <tr>
+                                        <td>
+                                            <!-- User input for given Percent-->
+                                            <input data-bind="value: givenPerc" data-val="true" type="text" />
+                                        </td>
+                                        <td>
+                                            <!-- Result for assumed percent-->
+                                            <input data-bind="value: percResult" data-val="true" type="text" class="result"/>
+                                        </td>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
-
-            <div class="col-md-6">
-                <form name=semCalc method="post">
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-6">
-                                    <b><font> SEM Input </font></b>
-                                </td>
-
-                                <td class="col-md-6">
-                                    <b><font>Output</font></b>
-                                </td>
-                            <tr>
-                                <td>
-                                    <!--User input for SEM to SD conversion-->
-                                    Enter SEM <br />
-                                    <input data-bind="value: SEM" data-val="true" type="text" /><br />
-
-                                    Enter n <br />
-                                    <input data-bind="value: semN" data-val="true" type="text" />
-                                </td>
-                                <td>
-                                    Standard Deviation <br />
-                                    <input data-bind="value: sdResult" data-val="true" type="text" />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
-            </div>
-
         </div>
-        
-               
-            <form name=ciCalc method="post">
-                <div id="Conv">
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-6">
-                                    <B>
-                                        Confidence Interval Input
-                                    </B>
-                                </td>
 
-                                <td class="col-md-6">
-                                    <b><font>Output</font></b>
-                                </td>
-                            <tr>
-                                <td>
-                                    Enter Upper Value &emsp;&emsp;&nbsp; Enter n Value <br />
+    <!------------------------------------------------------SEM to SD------------------------------------------->
+    <form name=semCalc method="post">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="tableTitle">Convert SEM to SD</h3>
+                            <input type="reset" id="tableTitle" value="Reset" class="btn-warning">
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>SEM Value</th>
+                                        <th>N Value</th>
+                                        <th>SD Output</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <!--User input for SEM to SD conversion-->
+                                            <input data-bind="value: SEM" data-val="true" type="text" />
+                                        </td>
+                                        <td>
+                                            <input data-bind="value: semN" data-val="true" type="text" />
+                                        </td>
+                                        <td>
+                                            <input data-bind="value: sdResult" data-val="true" type="text" class="result"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 
-                                    <input data-bind="value: upperBound" data-val="true" type="text">
 
-                                    <input data-bind="value: ciN" data-val="true" type="text"><br />
-
-                                    Enter Lower Value &emsp;&emsp;&nbsp; Select CI %<br />
-                                    <input data-bind="value: lowerBound" data-val="true" type="text">
+    <!----------------------------------------------------------CI To SD----------------------------------------------------------------------->
 
 
-                                    <select data-bind="value: selectedCiValue">
-                                        <option value="1.645">90</option>
-                                        <option value="1.96" selected>95</option>
-                                        <option value="2.33">98</option>
-                                        <option value="2.57">99</option>
-                                    </select>
+    <form name=ciCalc method="post">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="tableTitle">Convert CI to SD </h3>
+                            <input type="reset" id="tableTitle" value="Reset" class="btn-warning">
+                        </div>
+                        <div class="panel-body">
+                            <div id="Conv">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Upper Bound</th>
+                                            <th>Lower Bound</th>
+                                            <th>CI %</th>
+                                            <th>N Value</th>
+                                            <th>SD Output</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <input data-bind="value: upperBound" data-val="true" type="text">
+                                            </td>
+                                            <td>
+                                                <input data-bind="value: lowerBound" data-val="true" type="text">
+                                            </td>
+                                            <td>
+                                                <select data-bind="value: selectedCiValue">
+                                                    <option value="1.645">90</option>
+                                                    <option value="1.96" selected>95</option>
+                                                    <option value="2.33">98</option>
+                                                    <option value="2.57">99</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input data-bind="value: ciN" data-val="true" type="text"><br />
+                                            </td>
+                                            <td>
+                                                <input data-bind="value: ciSdResult" data-val="true" type="text" class="result">
+                                            </td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 
-                                </td>
-                                <td>
-                                    Standard Deviation <br />
-                                    <input data-bind="value: ciSdResult" data-val="true" type="text">
-                                </td>
-                        </tbody>
-                    </table>
+    <!-----------------------------------------------Indiv to Mean SD--------------------------------------------------------------------->
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <form name=indivCalcTable method="post" id="DynamicM">
+                <div class="col-lg-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="tableTitle"> Individual Data Input</h3>
+                            <input type="reset" id="tableTitle" value="Reset" class="btn-warning">
+                            <input type="button" id="tableTitle" class="btn-danger" value="Delete" onclick="deleteRow(this)" />
+                            <input type="button" id="tableTitle" class="btn-info" value="Add" onclick="insRow()" />
+                        </div>
+                        <div id="InputTablediv">
+                            <table id="InputTable" class="table table-bordered table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Patient Number</b></td>
+                                        <td><b>Value</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><input class="PatientV" name=iz /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form name=form5 method="post" id="MSD">
+                <div class="col-lg-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" id="tableTitle">Mean SD Results</h3>
+                            <input type="reset" id="tableTitle" value="Reset" class="btn-warning">
+                            <INPUT onclick=calculateMSD() type=button id="tableTitle" class="btn-success" value="Calculate">
+                        </div>
+                        <div id="OverMSD">
+                            <table id="SDRaw" class="table table-bordered table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Overall Mean</b></td>
+                                        <td><b>Overall Standard Deviation</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input id="totalMean" type="text" class="result" /></td>
+                                        <td><input id="totalSD" class="result"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
-    
-
-    <!-------------------------------------------------------------------------------------------------------------------->
-
-
-    <div class="container">
-
-        <div class="col-md-6">
-            <div id="InputTablediv">
-                <form name=indivCalcTable method="post" id="DynamicM">
-                    <table id="InputTable" class="table-bordered">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <B>
-                                        Mean/SD for Individual Patient Data
-                                    </B>
-                                </td>
-
-                            <tr>
-                                <td>Patient Number</td>
-                                <td>Value</td>
-                                <td><input type="button" class="button buttonCalc" value="Delete" onclick="deleteRow(this)" /></td>
-                                <td><input type="button" id="AddP" class="button buttonCalc" value="Add" onclick="insRow()" /></td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td><input class="PatientV" name=iz /></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
-            </div>
         </div>
-
-        <div class="col-md-6">
-
-            <div id="OverMSD">
-                <form name=form5 method="post" id="MSD">
-                    <table id="SDRaw" class="table-bordered">
-                        <tr>
-                            <td>
-                                <b>Output</b>
-                            </td>
-                            <td>
-                                <INPUT onclick=calculateMSD() type=button class="button buttonCalc" value="Calculate">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Overall Mean <input id="totalMean" type="text" /></td>
-                            <td>Overall Standard Deviation <input id="totalSD" /></td>
-                            
-
-                        </tr>
-                    </table>
-                    
-                </form>
-            </div>
-
-        </div>
-    </div>
-
 </body>
 </html>

@@ -3,7 +3,16 @@ body {
   background-color: #e6e6e6;
 }
 
-table{
+/*table {
     background-color: #fff;
+}*/
+
+#tableTitle{
+        text-align: center;
+        display:inline-block;
+        padding: 5px;
 }
 
+.result{
+    border: 2px solid #449D44;
+}

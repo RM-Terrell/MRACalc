@@ -43,30 +43,31 @@ $(document).ready(function () {
                    return Math.round(((this.upperBound() - this.lowerBound()) * Math.sqrt(this.ciN()) / (2 * this.selectedCiValue()))* 100) / 100
                }, this);
 
-        
+
     }
     ko.applyBindings(new AppViewModel(), $(".container")[0]);
 });
+
 
 //Row Deletion for Dynamic Table //
 
 function deleteRow(row) {
 
     var rowCount = $('#InputTable tr').length;
-    if (rowCount > 3) {
+    if (rowCount > 2) {
 
         document.getElementById('InputTable').deleteRow(rowCount - 1);
     }
-    
+
  }
 
 // Row Insertion for Dynamic Table//
 function insRow() {
   var x = document.getElementById('InputTable');
   // copy the targeted row
-  var new_row = x.rows[2].cloneNode(true);
+  var new_row = x.rows[1].cloneNode(true);
   // get the total number of rows
-  var len = x.rows.length - 1;
+  var len = x.rows.length;
   // set the innerHTML of the first row
   new_row.cells[0].innerHTML = len;
 
@@ -82,7 +83,7 @@ function insRow() {
 
 function calculateMSD() {
 
-//----------------- Mean Calculations-------------------------//
+//------------------------------- Mean Calculations--------------------------------------//
   var sum = 0;
   var rowCount = $('#InputTable tr').length;
   //iterate through each textboxes and add the values
@@ -94,11 +95,11 @@ function calculateMSD() {
     }
 
   });
-  var totalMean = sum / (rowCount - 2);
+  var totalMean = sum / (rowCount - 1);
 
   $("#totalMean").val(totalMean.toFixed(2));
 
-//------------------- SD Calculations--------------------------//
+//--------------------------------- SD Calculations---------------------------------//
 
   var SqrDiffSum = 0;
 
@@ -111,9 +112,7 @@ function calculateMSD() {
 
   });
 
-  var totalSD = Math.sqrt(SqrDiffSum / (rowCount - 2));
+  var totalSD = Math.sqrt(SqrDiffSum / (rowCount - 1));
   $("#totalSD").val(totalSD.toFixed(2));
 
 }
-
-
