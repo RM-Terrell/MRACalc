@@ -10,7 +10,7 @@
     <script type="text/javascript" src="node_modules/knockout/build/output/knockout-latest.js"></script>
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
-    
+
     <link href="style.css" rel="stylesheet" />
     <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"></script>
 
@@ -72,6 +72,7 @@
                                 <input type="reset" id="tableTitle" value="Reset" class="btn-warning">
                             </div>
                             <div class="panel-body">
+                              <div class="table-responsive">
                                 <table class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
@@ -89,6 +90,7 @@
                                             <input data-bind="value: percResult" data-val="true" type="text" class="result"/>
                                         </td>
                                 </table>
+                              </div>
                             </div>
                         </div>
                     </div>
@@ -107,6 +109,7 @@
                             <input type="reset" id="tableTitle" value="Reset" class="btn-warning">
                         </div>
                         <div class="panel-body">
+                          <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
@@ -130,6 +133,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -150,6 +154,7 @@
                         </div>
                         <div class="panel-body">
                             <div id="Conv">
+                              <div class="table-responsive">
                                 <table class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
@@ -184,6 +189,7 @@
                                             </td>
                                     </tbody>
                                 </table>
+                              </div>
                             </div>
                         </div>
                     </div>
@@ -204,8 +210,9 @@
                             <input type="button" id="tableTitle" class="btn-info" value="Add" onclick="insRow()" />
                         </div>
                         <div id="InputTablediv">
+                          <div class="table-responsive">
                             <table id="InputTable" class="table table-bordered table-hover">
-                                <tbody>
+                                <tbody id="AppendTarget">
                                     <tr>
                                         <td><b>Patient Number</b></td>
                                         <td><b>Value</b></td>
@@ -216,6 +223,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -229,6 +237,7 @@
                             <INPUT onclick=calculateMSD() type=button id="tableTitle" class="btn-success" value="Calculate">
                         </div>
                         <div id="OverMSD">
+                          <div class="table-responsive">
                             <table id="SDRaw" class="table table-bordered table-hover">
                                 <tbody>
                                     <tr>
@@ -241,6 +250,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                          </div>
                         </div>
                     </div>
                 </div>

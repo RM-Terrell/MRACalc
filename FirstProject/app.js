@@ -70,13 +70,15 @@ function insRow() {
   // set the innerHTML of the first row
   new_row.cells[0].innerHTML = len;
 
+  var AppendTarget = (document.getElementById('AppendTarget'));
+
   // grab the input from the first cell and update its ID and value
   var inp1 = new_row.cells[1].getElementsByTagName('input')[0];
   inp1.id += len;
   inp1.value = '';
 
   // append the new row to the table
-  x.appendChild(new_row);
+  AppendTarget.appendChild(new_row);
 } /*Origin of source material for row addition and deletion function "http://stackoverflow.com/questions/6473111/add-delete-table-rows-dynamically-using-javascript" */
 
 
