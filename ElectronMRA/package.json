@@ -1,5 +1,5 @@
 {
-  "name": "firstproject",
+  "name": "ElectronMRA",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,5 +10,10 @@
   "license": "ISC",
   "devDependencies": {
     "electron-prebuilt": "^1.4.13"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1",
+    "knockout": "^3.4.2"
   }
 }
